@@ -29,16 +29,18 @@ function buildCharts(sample) {
   // @TODO: Use `d3.json` to fetch the sample data for the plots
 
   d3.json("/samples/" + sample).then(function(smplData){
-    smplData = smplData.sort(function(a, b) {
-      return b.sample_values - a.sample_values;
-    });    
 
+    // smplData = smplData.sort(function(a, b) {
+    //   return b.sample_values - a.sample_values;
+    // });    
+    
   // @TODO: Build a Bubble Chart using the sample data
 
-    var bubbleValues = smplData.map(sample => sample.sample_values);
-    var bubbleSize = smplData.map(sample => sample.sample_values + 20);
-    var bubbleIds = smplData.map(sample => sample.otu_id );
-    var bubbleLabels = smplData.map(sample => sample.otu_label );
+    
+    var bubbleValues = smplData.sample_values;
+    // var bubbleSize = smplData.map(sample => sample.sample_values + 20);
+    var bubbleIds = smplData.otu_ids;
+    var bubbleLabels = smplData.otu_labels;
 
     var trace1 = {
       x: bubbleIds,
@@ -47,7 +49,7 @@ function buildCharts(sample) {
       text: bubbleLabels,
       mode: 'markers',
       marker: {
-        size: bubbleSize,
+        size: bubbleValues,
         color: bubbleIds,
         colorscale: 'Viridis'
       }
@@ -64,32 +66,41 @@ function buildCharts(sample) {
   
     Plotly.newPlot("bubble", data, layout);
 
-  // @TODO: Build a Pie Chart
-  // HINT: You will need to use slice() to grab the top 10 sample_values,
-  // otu_ids, and labels (10 each).
+  // // @TODO: Build a Pie Chart
+  // // HINT: You will need to use slice() to grab the top 10 sample_values,
+  // // otu_ids, and labels (10 each).
 
-    pieData = smplData.slice(0,10)
 
-    var pieValues = pieData.map(sample => sample.sample_values);
-    var pieIds = pieData.map(sample => sample.otu_id );
-    var pieLabels = pieData.map(sample => sample.otu_label );
 
-    var trace1 = {
-      labels: pieIds,
-      values: pieValues,
-      text: pieLabels,
-      textinfo: 'percent',
-      hoverinfo: 'label+text+value+percent',
-      // hovertemplate: '%{label:">"}<br>%{text:">"}<br>%{value:">"}<br>%{percent:">"}',
-      type: 'pie'
-    };
-    var data = [trace1];
-    var layout = {
-      title: "",
-      width: 900
-    };
+    pieData = smplData;
 
-    Plotly.newPlot("pie", data, layout);
+    var pieValues = pieData.sample_values;
+    // var pieIds = pieData.otu_ids;
+    // var pieLabels = pieData.otu_labels;
+
+    pieValues = pieValues.sort(function(a, b) {
+      return b - a;
+    });
+    console.log(pieValues);
+
+
+
+  //   var trace1 = {
+  //     labels: pieIds,
+  //     values: pieValues,
+  //     text: pieLabels,
+  //     textinfo: 'percent',
+  //     hoverinfo: 'label+text+value+percent',
+  //     // hovertemplate: '%{label:">"}<br>%{text:">"}<br>%{value:">"}<br>%{percent:">"}',
+  //     type: 'pie'
+  //   };
+  //   var data = [trace1];
+  //   var layout = {
+  //     title: "",
+  //     width: 900
+  //   };
+
+  //   Plotly.newPlot("pie", data, layout);
   });
 
 
