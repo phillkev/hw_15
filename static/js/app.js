@@ -15,7 +15,7 @@ function buildMetadata(sample) {
 
     Object.entries(smplMeta).forEach(function([key, value]) {
       // Append a ul row for metadata value
-      var row = metaGrid.append("ul");
+      var row = metaGrid.append("p");
       row.text(key + ": " + value);
     });
   });
@@ -85,8 +85,7 @@ function buildCharts(sample) {
     };
     var data = [trace1];
     var layout = {
-      title: "",
-      width: 900
+      width: 600
     };
 
     Plotly.newPlot("pie", data, layout);
