@@ -10,8 +10,6 @@ function buildMetadata(sample) {
     metaGrid.html("")
 
     // Use `Object.entries` to add each key and value pair to the panel
-    // Hint: Inside the loop, you will need to use d3 to append new
-    // tags for each key-value in the metadata.
 
     Object.entries(smplMeta).forEach(function([key, value]) {
       // Append a ul row for metadata value
@@ -34,12 +32,19 @@ function buildCharts(sample) {
     });    
 
   // @TODO: Build a Bubble Chart using the sample data
+  // create arrays for the bubble chart
 
     var bubbleValues = smplData.map(sample => sample.sample_values);
+    // Added 20 to the sample_value so the bubbles with very small sample sizes were more visible.
+    // Adding a flat value was more desirable than a more complex formula since we do not want 
+    // The large sample sizes to get too large.
     var bubbleSize = smplData.map(sample => sample.sample_values + 20);
     var bubbleIds = smplData.map(sample => sample.otu_id );
     var bubbleLabels = smplData.map(sample => sample.otu_label );
 
+    // Build the trace, datta and layout.
+    // The color scale of Viridis is used due to the chart background being white
+    // We want all bubbles to be visible on the chart.
     var trace1 = {
       x: bubbleIds,
       y: bubbleValues,
@@ -61,33 +66,33 @@ function buildCharts(sample) {
       height: 600,
       width: 1200
     };
-  
+  // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
     Plotly.newPlot("bubble", data, layout);
 
   // @TODO: Build a Pie Chart
-  // HINT: You will need to use slice() to grab the top 10 sample_values,
-  // otu_ids, and labels (10 each).
 
+  // Since the dataset is stored as records we can simply slice the data once
     pieData = smplData.slice(0,10)
 
+  // Create the arrays for the pie chart 
     var pieValues = pieData.map(sample => sample.sample_values);
     var pieIds = pieData.map(sample => sample.otu_id );
     var pieLabels = pieData.map(sample => sample.otu_label );
 
+  // build the trace, data and layout  
     var trace1 = {
       labels: pieIds,
       values: pieValues,
       text: pieLabels,
       textinfo: 'percent',
       hoverinfo: 'label+text+value+percent',
-      // hovertemplate: '%{label:">"}<br>%{text:">"}<br>%{value:">"}<br>%{percent:">"}',
       type: 'pie'
     };
     var data = [trace1];
     var layout = {
       width: 600
     };
-
+  // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
     Plotly.newPlot("pie", data, layout);
   });
 
