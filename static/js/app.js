@@ -60,6 +60,8 @@ function buildGauge(dialValue) {
       align: 'center',
       x: 0.5,
       y: 1,
+      xref: 'paper',
+      yref: 'paper',
     },
     align: 'center',
   }],
