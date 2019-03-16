@@ -18,52 +18,73 @@ function buildGauge(dialValue) {
   pathEnd = ' Z';
   var path = mainPath.concat(pathX,space,pathY,pathEnd);
 
-  var data = [{ type: 'scatter',
-  x: [0], y:[0],
-  marker: {size: 15, color:'850000'},
-  showlegend: false,
-  name: 'Wash Frequency',
-  text: dialValue,
-  hoverinfo: 'text+name'},
-  { values: [50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50],
-  rotation: 90,
-  text: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ''],
-  textinfo: 'text',
-  textposition:'inside',
-  marker: {colors:['rgba(88, 110, 209, .5)',
-                      'rgba(156,108,202, .5)', 'rgba(203,108,187, .5)',
-                      'rgba(235,114,168, .5)', 'rgba(254,127,149, .5)',
-                      'rgba(255,147,132, .5)', 'rgba(255,171,122, .5)',
-                      'rgba(255,195,122, .5)', 'rgba(255,228,194, .5)',
-                      'rgba(255, 255, 255, 0)']},
-  labels: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ''],
-  hoverinfo: 'label',
-  hole: .5,
-  type: 'pie',
-  showlegend: false
-  }];
+  var data = [
+    { 
+      type: 'scatter',
+      x: [0], 
+      y:[0],
+      marker: {
+        size: 15, 
+        color:'850000'
+      },
+      showlegend: false,
+      name: 'Wash Frequency',
+      text: dialValue,
+      hoverinfo: 'text+name'
+    },
+    {
+      values: [50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50],
+      rotation: 90,
+      text: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ''],
+      textinfo: 'text',
+      textposition:'inside',
+      marker: {
+        colors:[
+          'rgba(88, 110, 209, .5)','rgba(156,108,202, .5)', 'rgba(203,108,187, .5)',
+          'rgba(235,114,168, .5)', 'rgba(254,127,149, .5)',
+          'rgba(255,147,132, .5)', 'rgba(255,171,122, .5)',
+          'rgba(255,195,122, .5)', 'rgba(255,228,194, .5)',
+          'rgba(255, 255, 255, 0)'
+        ]
+      },
+      labels: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ''],
+      hoverinfo: 'label',
+      hole: .5,
+      type: 'pie',
+      showlegend: false
+    }
+  ];
 
   var layout = {
-  shapes:[{
-  type: 'path',
-  path: path,
-  fillcolor: '850000',
-  line: {
-    color: '850000'
-  }
-  }],
-  title: {
-    text: 'Belly Button Washing Frequency<br><small>Scrubs per Week</small>',
-  },
-  width: 360,
-  xaxis: {zeroline:false, showticklabels:false,
-          showgrid: false, range: [-1, 1]},
-  yaxis: {zeroline:false, showticklabels:false,
-          showgrid: false, range: [-1, 1]}
+    shapes:[{
+      type: 'path',
+      path: path,
+      fillcolor: '850000',
+      line: {
+        color: '850000'
+      }
+    }],
+    title: {
+      text: 'Belly Button Washing Frequency<br>Scrubs per Week',
+    },
+    width: 360,
+    height: 360,
+    xaxis: {
+      zeroline:false,
+      showticklabels:false,
+      showgrid: false, 
+      range: [-1, 1]
+    },
+    yaxis: {
+      zeroline:false, 
+      showticklabels:false,
+      showgrid: false, 
+      range: [-1, 1]
+    }
   };
 
   Plotly.newPlot('gauge', data, layout);
-}
+  }
 
 
 function buildMetadata(sample) {
