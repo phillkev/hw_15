@@ -179,7 +179,8 @@ function buildCharts(sample) {
     };
     var data = [trace1];
     var layout = {
-      width: 540
+      width: 540,
+      height: 540
     };
   // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
     Plotly.newPlot("pie", data, layout);
