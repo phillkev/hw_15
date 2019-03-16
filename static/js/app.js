@@ -56,12 +56,14 @@ function buildGauge(dialValue) {
   annotations: [{
     text: "Scrubs per Week",
     font: {
-      size: 13},
+      size: 13
+    },
+    showarrow: false,
+    align: 'center',
     x: 0.5,
     y: 1,
     xref: 'paper',
     yref: 'paper',
-    align: 'center',
   }],
   width: 360,
   xaxis: {zeroline:false, showticklabels:false,
