@@ -1,3 +1,70 @@
+function buildGauge(dialValue) {
+  // This code is based on code from https://plot.ly/javascript/gauge-charts/
+  // Trig to calc meter point
+  // Convert the dialValue to a value relevent to the dial
+  level = dialValue/10*180
+
+  var degrees = 180 - level,
+  radius = .5;
+  var radians = degrees * Math.PI / 180;
+  var x = radius * Math.cos(radians);
+  var y = radius * Math.sin(radians);
+
+  // Path: may have to change to create a better triangle
+  var mainPath = 'M -.0 -0.025 L .0 0.025 L ',
+  pathX = String(x),
+  space = ' ',
+  pathY = String(y),
+  pathEnd = ' Z';
+  var path = mainPath.concat(pathX,space,pathY,pathEnd);
+
+  var data = [{ type: 'scatter',
+  x: [0], y:[0],
+  marker: {size: 28, color:'850000'},
+  showlegend: false,
+  name: 'speed',
+  text: level,
+  hoverinfo: 'text+name'},
+  { values: [50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50],
+  rotation: 90,
+  text: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ''],
+  textinfo: 'text',
+  textposition:'inside',
+  marker: {colors:['rgba(88, 110, 209, .5)',
+                      'rgba(156,108,202, .5)', 'rgba(203,108,187, .5)',
+                      'rgba(235,114,168, .5)', 'rgba(254,127,149, .5)',
+                      'rgba(255,147,132, .5)', 'rgba(255,171,122, .5)',
+                      'rgba(255,195,122, .5)', 'rgba(255,228,194, .5)',
+                      'rgba(255, 255, 255, 0)']},
+  labels: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ''],
+  hoverinfo: 'label',
+  hole: .5,
+  type: 'pie',
+  showlegend: false
+  }];
+
+  var layout = {
+  shapes:[{
+  type: 'path',
+  path: path,
+  fillcolor: '850000',
+  line: {
+    color: '850000'
+  }
+  }],
+  title: 'Wash Frequency',
+  height: 1000,
+  width: 1000,
+  xaxis: {zeroline:false, showticklabels:false,
+          showgrid: false, range: [-1, 1]},
+  yaxis: {zeroline:false, showticklabels:false,
+          showgrid: false, range: [-1, 1]}
+  };
+
+  Plotly.newPlot('gauge', data, layout);
+}
+
+
 function buildMetadata(sample) {
 
   // @TODO: Complete the following function that builds the metadata panel
@@ -19,7 +86,8 @@ function buildMetadata(sample) {
   });
 
     // BONUS: Build the Gauge Chart
-    // buildGauge(data.WFREQ);
+    buildGauge(data.WFREQ);
+
 }
 
 function buildCharts(sample) {
