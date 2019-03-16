@@ -1,9 +1,9 @@
 function buildGauge(dialValue) {
-  // This code is based on code from https://plot.ly/javascript/gauge-charts/
+  // This code is modified from the code  https://plot.ly/javascript/gauge-charts/
   // Trig to calc meter point
   // Convert the dialValue to a value relevent to the dial
   level = dialValue/9*180
-  console.log(level)
+
   var degrees = 180 - level,
   radius = .5;
   var radians = degrees * Math.PI / 180;
@@ -17,7 +17,6 @@ function buildGauge(dialValue) {
   pathY = String(y),
   pathEnd = ' Z';
   var path = mainPath.concat(pathX,space,pathY,pathEnd);
-  console.log(path)
 
   var data = [{ type: 'scatter',
   x: [0], y:[0],
@@ -53,7 +52,7 @@ function buildGauge(dialValue) {
     color: '850000'
   }
   }],
-  title: 'Wash Frequency',
+  title: '<h2>Belly Button Washing Frequency</h2><br><h4>Scrubs per Week</h4>',
   width: 360,
   xaxis: {zeroline:false, showticklabels:false,
           showgrid: false, range: [-1, 1]},
@@ -132,10 +131,12 @@ function buildCharts(sample) {
     var data = [trace1];
     
     var layout = {
-      title: 'Marker Size',
       showlegend: false,
+      xaxis=dict(
+        title='OTU_ID'
+      ),
       height: 600,
-      width: 1200
+      // width: 1200
     };
   // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
     Plotly.newPlot("bubble", data, layout);
