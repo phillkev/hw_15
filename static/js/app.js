@@ -2,7 +2,7 @@ function buildGauge(dialValue) {
   // This code is based on code from https://plot.ly/javascript/gauge-charts/
   // Trig to calc meter point
   // Convert the dialValue to a value relevent to the dial
-  level = dialValue/10*180
+  level = dialValue/9*180
   console.log(level)
   var degrees = 180 - level,
   radius = .5;
