@@ -52,7 +52,7 @@ function buildGauge(dialValue) {
     color: '850000'
   }
   }],
-  title: {text: '<h2>Belly Button Washing Frequency</h2><br><h4>Scrubs per Week</h4>'},
+  title: {text: '<s>Belly Button Washing Frequency</s><br>Scrubs per Week'},
   width: 360,
   xaxis: {zeroline:false, showticklabels:false,
           showgrid: false, range: [-1, 1]},
