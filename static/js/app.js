@@ -55,14 +55,12 @@ function buildGauge(dialValue) {
   title: {text: 'Belly Button Washing Frequency'},
   annotations: [{
     text: "Scrubs per Week",
-      font: {
-      size: 13,
-      align: 'center',
-      x: 0.5,
-      y: 1,
-      xref: 'paper',
-      yref: 'paper',
-    },
+    font: {
+      size: 13},
+    x: 0.5,
+    y: 1,
+    xref: 'paper',
+    yref: 'paper',
     align: 'center',
   }],
   width: 360,
