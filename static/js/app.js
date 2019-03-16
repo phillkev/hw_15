@@ -132,11 +132,13 @@ function buildCharts(sample) {
     
     var layout = {
       showlegend: false,
-      xaxis=dict(
-        title='OTU_ID'
-      ),
-      height: 600,
-      // width: 1200
+      xaxis: {
+        title: {
+          text: 'OTU_ID'
+        }
+      },
+      // width: 1200,
+      height: 600
     };
   // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
     Plotly.newPlot("bubble", data, layout);
