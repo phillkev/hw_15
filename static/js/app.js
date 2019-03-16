@@ -54,8 +54,7 @@ function buildGauge(dialValue) {
   }
   }],
   title: 'Wash Frequency',
-  height: 100,
-  width: 100,
+  width: 450,
   xaxis: {zeroline:false, showticklabels:false,
           showgrid: false, range: [-1, 1]},
   yaxis: {zeroline:false, showticklabels:false,
