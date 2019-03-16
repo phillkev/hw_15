@@ -69,6 +69,7 @@ function buildGauge(dialValue) {
       text: 'Belly Button Washing Frequency<br>Scrubs per Week',
     },
     height: 360,
+    width: 360,
     xaxis: {
       zeroline:false,
       showticklabels:false,
