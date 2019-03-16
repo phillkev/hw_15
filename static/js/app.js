@@ -3,7 +3,7 @@ function buildGauge(dialValue) {
   // Trig to calc meter point
   // Convert the dialValue to a value relevent to the dial
   level = dialValue/10*180
-
+  console.log(level)
   var degrees = 180 - level,
   radius = .5;
   var radians = degrees * Math.PI / 180;
@@ -17,6 +17,7 @@ function buildGauge(dialValue) {
   pathY = String(y),
   pathEnd = ' Z';
   var path = mainPath.concat(pathX,space,pathY,pathEnd);
+  console.log(path)
 
   var data = [{ type: 'scatter',
   x: [0], y:[0],
