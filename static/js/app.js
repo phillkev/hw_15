@@ -53,7 +53,13 @@ function buildGauge(dialValue) {
   }
   }],
   title: {text: 'Belly Button Washing Frequency'},
-  subtitle: {text: 'Scrubs per Week'},
+  annotations: [{
+    text: "Scrubs per Week",
+      font: {
+      size: 13,
+    },
+    align: 'center',
+  }],
   width: 360,
   xaxis: {zeroline:false, showticklabels:false,
           showgrid: false, range: [-1, 1]},
