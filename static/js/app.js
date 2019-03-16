@@ -54,8 +54,8 @@ function buildGauge(dialValue) {
   }
   }],
   title: 'Wash Frequency',
-  height: 1000,
-  width: 1000,
+  height: 100,
+  width: 100,
   xaxis: {zeroline:false, showticklabels:false,
           showgrid: false, range: [-1, 1]},
   yaxis: {zeroline:false, showticklabels:false,
@@ -162,7 +162,7 @@ function buildCharts(sample) {
     };
     var data = [trace1];
     var layout = {
-      width: 600
+      width: 450
     };
   // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
     Plotly.newPlot("pie", data, layout);
