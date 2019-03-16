@@ -1,9 +1,10 @@
 function buildGauge(dialValue) {
-  // This code is modified from the code  https://plot.ly/javascript/gauge-charts/
-  // Trig to calc meter point
+  // This code is modified from the code https://plot.ly/javascript/gauge-charts/
+
   // Convert the dialValue to a value relevent to the dial
   level = dialValue/9*180
 
+  // Trig to calc meter point
   var degrees = 180 - level,
   radius = .5;
   var radians = degrees * Math.PI / 180;
@@ -11,7 +12,7 @@ function buildGauge(dialValue) {
   var y = radius * Math.sin(radians);
 
   // Path: may have to change to create a better triangle
-  var mainPath = 'M -.0 -0.025 L .0 0.025 L ',
+  var mainPath = 'M -.0 -0.05 L .0 0.05 L ',
   pathX = String(x),
   space = ' ',
   pathY = String(y),
@@ -88,7 +89,6 @@ function buildGauge(dialValue) {
 
 
 function buildMetadata(sample) {
-
   // @TODO: Complete the following function that builds the metadata panel
   // Use `d3.json` to fetch the metadata for a sample
   d3.json("/metadata/" + sample).then(function(smplMeta){
@@ -99,7 +99,6 @@ function buildMetadata(sample) {
     metaGrid.html("")
 
     // Use `Object.entries` to add each key and value pair to the panel
-
     Object.entries(smplMeta).forEach(function([key, value]) {
       // Append a ul row for metadata value
       var row = metaGrid.append("p");
@@ -108,17 +107,12 @@ function buildMetadata(sample) {
 
     // BONUS: Build the Gauge Chart
     buildGauge(smplMeta.WFREQ);
-
-
   });
-
-
 }
 
 function buildCharts(sample) {
 
   // @TODO: Use `d3.json` to fetch the sample data for the plots
-
   d3.json("/samples/" + sample).then(function(smplData){
     smplData = smplData.sort(function(a, b) {
       return b.sample_values - a.sample_values;
@@ -160,14 +154,12 @@ function buildCharts(sample) {
           text: 'OTU_ID'
         }
       },
-      // width: 1200,
       height: 600
     };
   // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
     Plotly.newPlot("bubble", data, layout);
 
   // @TODO: Build a Pie Chart
-
   // Since the dataset is stored as records we can simply slice the data once
     pieData = smplData.slice(0,10)
 
