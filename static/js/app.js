@@ -6,7 +6,7 @@ function buildGauge(dialValue) {
 
   // Trig to calc meter point
   var degrees = 180 - level,
-  radius = .5;
+  radius = .65;
   var radians = degrees * Math.PI / 180;
   var x = radius * Math.cos(radians);
   var y = radius * Math.sin(radians);
@@ -68,8 +68,8 @@ function buildGauge(dialValue) {
     title: {
       text: 'Belly Button Washing Frequency<br>Scrubs per Week',
     },
-    height: 360,
-    width: 360,
+    height: 450,
+    width: 450,
     xaxis: {
       zeroline:false,
       showticklabels:false,
@@ -179,7 +179,7 @@ function buildCharts(sample) {
     };
     var data = [trace1];
     var layout = {
-      height: 540
+      height: 450
     };
   // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
     Plotly.newPlot("pie", data, layout);
