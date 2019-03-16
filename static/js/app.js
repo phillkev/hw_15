@@ -57,6 +57,9 @@ function buildGauge(dialValue) {
     text: "Scrubs per Week",
       font: {
       size: 13,
+      align: 'center',
+      x: 0.5,
+      y: 1,
     },
     align: 'center',
   }],
