@@ -179,6 +179,7 @@ function buildCharts(sample) {
     };
     var data = [trace1];
     var layout = {
+      width: 450,
       height: 450
     };
   // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
