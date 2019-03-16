@@ -25,7 +25,7 @@ function buildGauge(dialValue) {
       x: [0], 
       y:[0],
       marker: {
-        size: 15, 
+        size: 20, 
         color:'850000'
       },
       showlegend: false,
