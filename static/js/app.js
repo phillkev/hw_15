@@ -68,7 +68,6 @@ function buildGauge(dialValue) {
     title: {
       text: 'Belly Button Washing Frequency<br>Scrubs per Week',
     },
-    width: 360,
     height: 360,
     xaxis: {
       zeroline:false,
@@ -154,7 +153,7 @@ function buildCharts(sample) {
           text: 'OTU_ID'
         }
       },
-      height: 600
+      height: 500
     };
   // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
     Plotly.newPlot("bubble", data, layout);
@@ -179,7 +178,6 @@ function buildCharts(sample) {
     };
     var data = [trace1];
     var layout = {
-      width: 540,
       height: 540
     };
   // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
