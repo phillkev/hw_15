@@ -20,6 +20,7 @@ function buildGauge(dialValue) {
   var path = mainPath.concat(pathX,space,pathY,pathEnd);
 
   var data = [
+    // this is dial marker
     { 
       type: 'scatter',
       x: [0], 
@@ -33,6 +34,8 @@ function buildGauge(dialValue) {
       text: dialValue,
       hoverinfo: 'text+name'
     },
+    // These are the dial slices.  Since this is guage we use colors that are more similar to a
+    // color wheel than the stark color changes used is typical pie charts
     {
       values: [50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50],
       rotation: 90,
@@ -57,6 +60,7 @@ function buildGauge(dialValue) {
   ];
 
   var layout = {
+    // This shape is the arm of the dial.  It extends from the dial center to the gauge shapes
     shapes:[{
       type: 'path',
       path: path,
@@ -125,6 +129,7 @@ function buildCharts(sample) {
     // Added 20 to the sample_value so the bubbles with very small sample sizes were more visible.
     // Adding a flat value was more desirable than a more complex formula since we do not want 
     // The large sample sizes to get too large.
+    // See sample 1526 for an example of a set with very small bacteria samples.
     var bubbleSize = smplData.map(sample => sample.sample_values + 20);
     var bubbleIds = smplData.map(sample => sample.otu_id );
     var bubbleLabels = smplData.map(sample => sample.otu_label );
