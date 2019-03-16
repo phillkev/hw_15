@@ -21,10 +21,10 @@ function buildGauge(dialValue) {
 
   var data = [{ type: 'scatter',
   x: [0], y:[0],
-  marker: {size: 28, color:'850000'},
+  marker: {size: 15, color:'850000'},
   showlegend: false,
-  name: 'speed',
-  text: level,
+  name: 'Wash Frequency',
+  text: dialValue,
   hoverinfo: 'text+name'},
   { values: [50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50],
   rotation: 90,
@@ -54,7 +54,7 @@ function buildGauge(dialValue) {
   }
   }],
   title: 'Wash Frequency',
-  width: 450,
+  width: 360,
   xaxis: {zeroline:false, showticklabels:false,
           showgrid: false, range: [-1, 1]},
   yaxis: {zeroline:false, showticklabels:false,
@@ -161,7 +161,7 @@ function buildCharts(sample) {
     };
     var data = [trace1];
     var layout = {
-      width: 450
+      width: 540
     };
   // plot the chart.  Use newPlot to ensure refreshes of the data do not add the results to the previous run.
     Plotly.newPlot("pie", data, layout);
