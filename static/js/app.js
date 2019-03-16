@@ -84,10 +84,13 @@ function buildMetadata(sample) {
       var row = metaGrid.append("p");
       row.text(key + ": " + value);
     });
-  });
 
     // BONUS: Build the Gauge Chart
     buildGauge(smplMeta.WFREQ);
+
+
+  });
+
 
 }
 
