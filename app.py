@@ -91,14 +91,6 @@ def samples(sample):
     # Format the data to send as json
 
 
-    # Original code replaced with code that returns an object that maintains index level relationships at the
-    # object level
-    # data = {
-    #     "otu_ids": sample_data.otu_id.values.tolist(),
-    #     "sample_values": sample_data[sample].values.tolist(),
-    #     "otu_labels": sample_data.otu_label.tolist(),
-    # }
-
     # This code returns the json in a record format which insures the data is linked at the object level versus
     # risking the data being decoupled due to inappropriate sorts.
     sample_data.rename(columns={sample: 'sample_values'}, inplace=True)
